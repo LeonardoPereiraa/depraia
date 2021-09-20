@@ -437,7 +437,7 @@ public class testandoApp {
       bro.quit();   
       assertEquals("200",elementoTexto);
   }
-  //22
+  //22*
   @Test
   public void postCadastradasAnbulante2() throws InterruptedException {
       String info1 = "{\"praia\":{\"id\":10000},";
@@ -459,6 +459,7 @@ public class testandoApp {
       bro.findElement(By.className("body-param__text")).clear();
       Thread.sleep(2000);
       bro.findElement(By.className("body-param__text")).sendKeys(info);
+      Thread.sleep(5000);
       bro.findElement(By.className("execute")).click();
       Thread.sleep(10000);
       String elementoTexto = bro.findElements(By.className("response-col_status")).get(1).getText();
@@ -485,6 +486,7 @@ public class testandoApp {
       bro.findElement(By.className("body-param__text")).clear();
       Thread.sleep(2000);
       bro.findElement(By.className("body-param__text")).sendKeys(info);
+      Thread.sleep(5000);
       bro.findElement(By.className("execute")).click();
       Thread.sleep(10000);
       String elementoTexto = bro.findElements(By.className("response-col_status")).get(1).getText();
@@ -492,5 +494,331 @@ public class testandoApp {
       bro.quit();   
       assertEquals("500\nUndocumented",elementoTexto);
   }
+  //24
+  @Test
+  public void getAnbulanteporId() throws InterruptedException {
+      
+      System.setProperty("webdriver.Chrome.driver", "chromedriver");
+      WebDriver bro;
+      bro = new ChromeDriver();
+      bro.navigate().to("http://localhost:8080/swagger-ui.html#/");
+      Thread.sleep(3000);
+      bro.findElements(By.className("expand-operation")).get(1).click();
+      Thread.sleep(3000);
+      bro.findElements(By.className("opblock-summary-method")).get(1).click();
+      Thread.sleep(3000);
+      bro.findElement(By.className("try-out")).click();
+      Thread.sleep(3000);
+      bro.findElement(By.tagName("input")).sendKeys("7");
+      Thread.sleep(3000);
+      bro.findElement(By.className("execute")).click();
+      Thread.sleep(10000);
+      String elementoTexto = bro.findElements(By.className("response-col_status")).get(1).getText();
+      Thread.sleep(3000);
+      bro.quit();   
+      assertEquals("200",elementoTexto);
+  }
   
+  //cadastro de produto
+  @Test
+  public void cadastroDeProduto1() throws InterruptedException {
+      String info = "{\"descricao\":\"P1\",\"nome\":\"P1\",\"preco\":999}";
+      System.setProperty("webdriver.Chrome.driver", "chromedriver");
+      WebDriver bro;
+      bro = new ChromeDriver();
+      bro.navigate().to("http://localhost:8080/swagger-ui.html#/");
+      Thread.sleep(3000);
+      bro.findElements(By.className("expand-operation")).get(5).click();
+      Thread.sleep(3000);
+      bro.findElements(By.className("opblock-summary-method")).get(0).click();
+      Thread.sleep(3000);
+      bro.findElement(By.className("try-out")).click();
+      Thread.sleep(2000);
+      bro.findElement(By.className("body-param__text")).clear();
+      Thread.sleep(2000);
+      bro.findElement(By.className("body-param__text")).sendKeys(info);
+      Thread.sleep(7000);
+      bro.findElement(By.className("execute")).click();
+      Thread.sleep(10000);
+      String elementoTexto = bro.findElements(By.className("response-col_status")).get(1).getText();
+      Thread.sleep(3000);
+      bro.quit();   
+      assertEquals("200",elementoTexto);
+  }
+  //cadastro de produto erro
+  @Test
+  public void cadastroDeProduto2() throws InterruptedException {
+      String info = "{}";
+      System.setProperty("webdriver.Chrome.driver", "chromedriver");
+      WebDriver bro;
+      bro = new ChromeDriver();
+      bro.navigate().to("http://localhost:8080/swagger-ui.html#/");
+      Thread.sleep(3000);
+      bro.findElements(By.className("expand-operation")).get(5).click();
+      Thread.sleep(3000);
+      bro.findElements(By.className("opblock-summary-method")).get(0).click();
+      Thread.sleep(3000);
+      bro.findElement(By.className("try-out")).click();
+      Thread.sleep(2000);
+      bro.findElement(By.className("body-param__text")).clear();
+      Thread.sleep(2000);
+      bro.findElement(By.className("body-param__text")).sendKeys(info);
+      Thread.sleep(7000);
+      bro.findElement(By.className("execute")).click();
+      Thread.sleep(10000);
+      String elementoTexto = bro.findElements(By.className("response-col_status")).get(1).getText();
+      Thread.sleep(3000);
+      bro.quit();   
+      assertEquals("500\nUndocumented",elementoTexto);
+  }
+  //buscar um produto por id 
+  @Test
+  public void buscarProdutoPorID() throws InterruptedException {
+      System.setProperty("webdriver.Chrome.driver", "chromedriver");
+      WebDriver bro;
+      bro = new ChromeDriver();
+      bro.navigate().to("http://localhost:8080/swagger-ui.html#/");
+      Thread.sleep(3000);
+      bro.findElements(By.className("expand-operation")).get(5).click();
+      Thread.sleep(3000);
+      bro.findElements(By.className("opblock-summary-method")).get(1).click();
+      Thread.sleep(3000);
+      bro.findElement(By.className("try-out")).click();
+      Thread.sleep(2000);
+      bro.findElement(By.tagName("input")).sendKeys("9");
+      Thread.sleep(3000);
+      bro.findElement(By.className("execute")).click();
+      Thread.sleep(10000);
+      String elementoTexto = bro.findElements(By.className("response-col_status")).get(1).getText();
+      Thread.sleep(3000);
+      bro.quit();   
+      assertEquals("200",elementoTexto);
+  }
+  //buscar Todos os  produto 
+  @Test
+  public void buscarTodosOsProduto() throws InterruptedException {
+      System.setProperty("webdriver.Chrome.driver", "chromedriver");
+      WebDriver bro;
+      bro = new ChromeDriver();
+      bro.navigate().to("http://localhost:8080/swagger-ui.html#/");
+      Thread.sleep(3000);
+      bro.findElements(By.className("expand-operation")).get(5).click();
+      Thread.sleep(3000);
+      bro.findElements(By.className("opblock-summary-method")).get(4).click();
+      Thread.sleep(3000);
+      bro.findElement(By.className("try-out")).click();
+      Thread.sleep(3000);
+      bro.findElement(By.className("execute")).click();
+      Thread.sleep(10000);
+      String elementoTexto = bro.findElements(By.className("response-col_status")).get(1).getText();
+      Thread.sleep(3000);
+      bro.quit();   
+      assertEquals("200",elementoTexto);
+  }
+   //cadastrar quiosque
+  @Test
+  public void cadastrarQuiosque() throws InterruptedException {
+      String info = "{\"nome\":\"Maria\",\"praia\":{\"id\":3}}";
+      System.setProperty("webdriver.Chrome.driver", "chromedriver");
+      WebDriver bro;
+      bro = new ChromeDriver();
+      bro.navigate().to("http://localhost:8080/swagger-ui.html#/");
+      Thread.sleep(3000);
+      bro.findElements(By.className("expand-operation")).get(6).click();
+      Thread.sleep(3000);
+      bro.findElements(By.className("opblock-summary-method")).get(0).click();
+      Thread.sleep(3000);
+      bro.findElement(By.className("try-out")).click();
+      Thread.sleep(3000);
+      bro.findElement(By.className("body-param__text")).clear();
+      Thread.sleep(2000);
+      bro.findElement(By.className("body-param__text")).sendKeys(info);
+      Thread.sleep(7000);
+      bro.findElement(By.className("execute")).click();
+      Thread.sleep(10000);
+      String elementoTexto = bro.findElements(By.className("response-col_status")).get(1).getText();
+      Thread.sleep(3000);
+      bro.quit();   
+      assertEquals("200",elementoTexto);
+  }
+  //cadastrar quiosque erro
+  @Test
+  public void cadastrarQuiosque2() throws InterruptedException {
+      String info = "{\"nome\":\"Maria\",\"praia\":{\"id\":30000}}";
+      System.setProperty("webdriver.Chrome.driver", "chromedriver");
+      WebDriver bro;
+      bro = new ChromeDriver();
+      bro.navigate().to("http://localhost:8080/swagger-ui.html#/");
+      Thread.sleep(3000);
+      bro.findElements(By.className("expand-operation")).get(6).click();
+      Thread.sleep(3000);
+      bro.findElements(By.className("opblock-summary-method")).get(0).click();
+      Thread.sleep(3000);
+      bro.findElement(By.className("try-out")).click();
+      Thread.sleep(3000);
+      bro.findElement(By.className("body-param__text")).clear();
+      Thread.sleep(2000);
+      bro.findElement(By.className("body-param__text")).sendKeys(info);
+      Thread.sleep(7000);
+      bro.findElement(By.className("execute")).click();
+      Thread.sleep(10000);
+      String elementoTexto = bro.findElements(By.className("response-col_status")).get(1).getText();
+      Thread.sleep(3000);
+      bro.quit();   
+      assertEquals("500",elementoTexto);
+  }
+  //cadastrar quiosque erro
+  @Test
+  public void cadastrarQuiosque3() throws InterruptedException {
+      String info = "{}";
+      System.setProperty("webdriver.Chrome.driver", "chromedriver");
+      WebDriver bro;
+      bro = new ChromeDriver();
+      bro.navigate().to("http://localhost:8080/swagger-ui.html#/");
+      Thread.sleep(3000);
+      bro.findElements(By.className("expand-operation")).get(6).click();
+      Thread.sleep(3000);
+      bro.findElements(By.className("opblock-summary-method")).get(0).click();
+      Thread.sleep(3000);
+      bro.findElement(By.className("try-out")).click();
+      Thread.sleep(3000);
+      bro.findElement(By.className("body-param__text")).clear();
+      Thread.sleep(2000);
+      bro.findElement(By.className("body-param__text")).sendKeys(info);
+      Thread.sleep(7000);
+      bro.findElement(By.className("execute")).click();
+      Thread.sleep(10000);
+      String elementoTexto = bro.findElements(By.className("response-col_status")).get(1).getText();
+      Thread.sleep(3000);
+      bro.quit();   
+      assertEquals("500",elementoTexto);
+  }
+  //buscar um Quiosque por id 
+  @Test
+  public void buscarQuiosquePorID() throws InterruptedException {
+      System.setProperty("webdriver.Chrome.driver", "chromedriver");
+      WebDriver bro;
+      bro = new ChromeDriver();
+      bro.navigate().to("http://localhost:8080/swagger-ui.html#/");
+      Thread.sleep(3000);
+      bro.findElements(By.className("expand-operation")).get(6).click();
+      Thread.sleep(3000);
+      bro.findElements(By.className("opblock-summary-method")).get(1).click();
+      Thread.sleep(3000);
+      bro.findElement(By.className("try-out")).click();
+      Thread.sleep(2000);
+      bro.findElement(By.tagName("input")).sendKeys("9");
+      Thread.sleep(3000);
+      bro.findElement(By.className("execute")).click();
+      Thread.sleep(10000);
+      String elementoTexto = bro.findElements(By.className("response-col_status")).get(1).getText();
+      Thread.sleep(3000);
+      bro.quit();   
+      assertEquals("200",elementoTexto);
+  }
+  //buscar Todos os  Quiosques 
+  @Test
+  public void buscarTodosOsQuiosques() throws InterruptedException {
+      System.setProperty("webdriver.Chrome.driver", "chromedriver");
+      WebDriver bro;
+      bro = new ChromeDriver();
+      bro.navigate().to("http://localhost:8080/swagger-ui.html#/");
+      Thread.sleep(3000);
+      bro.findElements(By.className("expand-operation")).get(6).click();
+      Thread.sleep(3000);
+      bro.findElements(By.className("opblock-summary-method")).get(4).click();
+      Thread.sleep(3000);
+      bro.findElement(By.className("try-out")).click();
+      Thread.sleep(3000);
+      bro.findElement(By.className("execute")).click();
+      Thread.sleep(10000);
+      String elementoTexto = bro.findElements(By.className("response-col_status")).get(1).getText();
+      Thread.sleep(3000);
+      bro.quit();   
+      assertEquals("200",elementoTexto);
+  }
+  //atualizar  Quiosque 
+  @Test
+  public void atualizarQuiosque() throws InterruptedException {
+      String info = "{\"nome\":\"VERMELHO\",\"praia\":{\"id\":3}}";;
+      System.setProperty("webdriver.Chrome.driver", "chromedriver");
+      WebDriver bro;
+      bro = new ChromeDriver();
+      bro.navigate().to("http://localhost:8080/swagger-ui.html#/");
+      Thread.sleep(3000);
+      bro.findElements(By.className("expand-operation")).get(6).click();
+      Thread.sleep(3000);
+      bro.findElements(By.className("opblock-summary-method")).get(2).click();
+      Thread.sleep(3000);
+      bro.findElement(By.className("try-out")).click();
+      Thread.sleep(3000);
+      bro.findElement(By.className("body-param__text")).clear();
+      Thread.sleep(2000);
+      bro.findElement(By.className("body-param__text")).sendKeys(info);
+      Thread.sleep(2000);
+      bro.findElement(By.tagName("input")).sendKeys("10");
+      Thread.sleep(2000);
+      bro.findElement(By.className("execute")).click();
+      Thread.sleep(10000);
+      String elementoTexto = bro.findElements(By.className("response-col_status")).get(1).getText();
+      Thread.sleep(3000);
+      bro.quit();   
+      assertEquals("200",elementoTexto);
+  }
+  //atualizar erro Quiosque 
+  @Test
+  public void atualizarQuiosque2() throws InterruptedException {
+      String info = "{\"nome\":\"VERMELHO\",\"praia\":{\"id\":3}}";;
+      System.setProperty("webdriver.Chrome.driver", "chromedriver");
+      WebDriver bro;
+      bro = new ChromeDriver();
+      bro.navigate().to("http://localhost:8080/swagger-ui.html#/");
+      Thread.sleep(3000);
+      bro.findElements(By.className("expand-operation")).get(6).click();
+      Thread.sleep(3000);
+      bro.findElements(By.className("opblock-summary-method")).get(2).click();
+      Thread.sleep(3000);
+      bro.findElement(By.className("try-out")).click();
+      Thread.sleep(3000);
+      bro.findElement(By.className("body-param__text")).clear();
+      Thread.sleep(2000);
+      bro.findElement(By.className("body-param__text")).sendKeys(info);
+      Thread.sleep(2000);
+      bro.findElement(By.tagName("input")).sendKeys("100000");
+      Thread.sleep(2000);
+      bro.findElement(By.className("execute")).click();
+      Thread.sleep(10000);
+      String elementoTexto = bro.findElements(By.className("response-col_status")).get(1).getText();
+      Thread.sleep(3000);
+      bro.quit();   
+      assertEquals("500",elementoTexto);
+  }
+  //atualizar erro Quiosque 
+  @Test
+  public void atualizarQuiosque3() throws InterruptedException {
+      String info = "{\"nome\":\"VERMELHO\",\"praia\":{\"id\":300000}}";;
+      System.setProperty("webdriver.Chrome.driver", "chromedriver");
+      WebDriver bro;
+      bro = new ChromeDriver();
+      bro.navigate().to("http://localhost:8080/swagger-ui.html#/");
+      Thread.sleep(3000);
+      bro.findElements(By.className("expand-operation")).get(6).click();
+      Thread.sleep(3000);
+      bro.findElements(By.className("opblock-summary-method")).get(2).click();
+      Thread.sleep(3000);
+      bro.findElement(By.className("try-out")).click();
+      Thread.sleep(3000);
+      bro.findElement(By.className("body-param__text")).clear();
+      Thread.sleep(2000);
+      bro.findElement(By.className("body-param__text")).sendKeys(info);
+      Thread.sleep(2000);
+      bro.findElement(By.tagName("input")).sendKeys("10");
+      Thread.sleep(2000);
+      bro.findElement(By.className("execute")).click();
+      Thread.sleep(10000);
+      String elementoTexto = bro.findElements(By.className("response-col_status")).get(1).getText();
+      Thread.sleep(3000);
+      bro.quit();   
+      assertEquals("500",elementoTexto);
+  }
 }
