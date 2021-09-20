@@ -99,8 +99,8 @@ public class AgendaControllerTest {
         int idPraia = JsonPath.read(content2, "$[0].id");
 
         SimplesUsuarioDTO entity = new SimplesUsuarioDTO();
-        entity.setAgendaId(idAgenda);
-        entity.setUserId(idPraia);
+        //entity.setAgendaId(idAgenda);
+        //entity.setUserId(idPraia);
 
         mockMvc.perform(MockMvcRequestBuilders.put("/agenda/reservar")
                 .content(gson.toJson(entity))
@@ -132,8 +132,8 @@ public class AgendaControllerTest {
         int idPraia = JsonPath.read(content2, "$[0].id");
 
         SimplesUsuarioDTO entity = new SimplesUsuarioDTO();
-        entity.setAgendaId(idAgenda);
-        entity.setUserId(idPraia);
+        //entity.setAgendaId(idAgenda);
+        //entity.setUserId(idPraia);
 
         mockMvc.perform(MockMvcRequestBuilders.delete("/agenda/cancelar")
                 .content(gson.toJson(entity))
