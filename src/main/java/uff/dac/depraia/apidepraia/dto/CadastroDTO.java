@@ -10,6 +10,7 @@ public class CadastroDTO {
     private PraiaIdDTO praia;
 
     public CadastroDTO() {
+        // implementação padrão ignorada
     }
         
     public Ambulante conversorAmbulante(Praia n) {

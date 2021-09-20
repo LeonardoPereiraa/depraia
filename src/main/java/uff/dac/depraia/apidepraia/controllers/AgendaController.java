@@ -24,6 +24,8 @@ import uff.dac.depraia.apidepraia.util.Mensagem;
 import uff.dac.depraia.apidepraia.model.Agenda;
 import uff.dac.depraia.apidepraia.repositories.LoginRepository;
 
+final String FORMATO_JSON_INVALIDO = "Formato JSON inválido, verifique e tente novamente";
+
 @Controller
 @RequestMapping("/agenda")
 public class AgendaController {
@@ -59,7 +61,7 @@ public class AgendaController {
                         return Mensagem.error("Praia", 4);
                     });
         } catch (NullPointerException e) {
-            return Mensagem.error("Formato JSON inválido, verifique e tente novamente", 5);
+            return Mensagem.error(FORMATO_JSON_INVALIDO, 5);
         }
     }
     
@@ -112,7 +114,7 @@ public class AgendaController {
                         return Mensagem.error("Praia", 4);
                     });
         } catch (NullPointerException e) {
-            return Mensagem.error("Formato JSON inválido, verifique e tente novamente", 5);
+            return Mensagem.error(FORMATO_JSON_INVALIDO, 5);
         } catch (Exception e) {
             return Mensagem.error(e.getMessage(), 5);
         }
@@ -168,7 +170,7 @@ public class AgendaController {
                         return Mensagem.error("Usuário", 4);
                     });
         } catch (NullPointerException e) {
-            return Mensagem.error("Formato JSON inválido, verifique e tente novamente", 5);
+            return Mensagem.error(FORMATO_JSON_INVALIDO, 5);
         }
     }
     
@@ -202,7 +204,7 @@ public class AgendaController {
                         return Mensagem.error("Usuário", 4);
                     });
         } catch (NullPointerException e) {
-            return Mensagem.error("Formato JSON inválido, verifique e tente novamente", 5);
+            return Mensagem.error(FORMATO_JSON_INVALIDO, 5);
         }
     }
 }

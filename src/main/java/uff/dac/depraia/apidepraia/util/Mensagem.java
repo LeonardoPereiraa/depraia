@@ -3,6 +3,8 @@ package uff.dac.depraia.apidepraia.util;
 import java.util.HashMap;
 import java.util.Map;
 
+final String ERRO = "Error! ";
+
 public class Mensagem {
 
     public static Map<String, Boolean> sucesso(String name, Integer action) {
@@ -17,6 +19,9 @@ public class Mensagem {
                 break;
             case 3:
                 aux = "deletado do";
+                break;
+            default:
+                aux = "";
                 break;
         }        
         response.put("Sucesso! " + name + " foi " + aux + " banco de dados", Boolean.TRUE);
@@ -37,13 +42,13 @@ public class Mensagem {
                 aux = "deletado do";
                 break;
             case 4:
-                response.put("Error! " + name + " não foi encontrado", Boolean.FALSE);
+                response.put(ERRO + name + " não foi encontrado", Boolean.FALSE);
                 return response;
             default:
-                response.put("Error! " + name, Boolean.FALSE);
+                response.put(ERRO + name, Boolean.FALSE);
                 return response;
         }
-        response.put("Error! " + name + " não foi " + aux + " banco de dados", Boolean.FALSE);
+        response.put(ERRO + name + " não foi " + aux + " banco de dados", Boolean.FALSE);
         return response;
     }
 }

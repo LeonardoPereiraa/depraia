@@ -29,6 +29,9 @@ import uff.dac.depraia.apidepraia.repositories.LoginRepository;
 import uff.dac.depraia.apidepraia.repositories.ProdutoRepository;
 import uff.dac.depraia.apidepraia.util.Mensagem;
 
+final String FORMATO_JSON_INVALIDO = "Formato JSON inválido, verifique e tente novamente";
+final String PRAIA = "Praia";
+
 @Controller
 @RequestMapping("/ambulante")
 public class AmbulanteController {
@@ -58,10 +61,10 @@ public class AmbulanteController {
                         return Mensagem.sucesso(aux.getClass().getSimpleName(), 1);
                     })
                     .orElseGet(() -> {
-                        return Mensagem.error("Praia", 4);
+                        return Mensagem.error(PRAIA, 4);
                     });
         } catch (NullPointerException e) {
-            return Mensagem.error("Formato JSON inválido, verifique e tente novamente", 5);
+            return Mensagem.error(FORMATO_JSON_INVALIDO, 5);
         }
     }
         
@@ -90,7 +93,7 @@ public class AmbulanteController {
                         return Mensagem.error("Produto", 4);
                     });
         } catch (NullPointerException e) {
-            return Mensagem.error("Formato JSON inválido, verifique e tente novamente", 5);
+            return Mensagem.error(FORMATO_JSON_INVALIDO, 5);
         } catch (Exception e) {
             return Mensagem.error(e.getMessage(), 5);
         }
@@ -112,7 +115,10 @@ public class AmbulanteController {
     public @ResponseBody
     AmbulanteDTO getById(@PathVariable int id) {
         Optional<User> user = loginRepo.findById(id);
-        return new AmbulanteDTO(ambulanteRepo.findByUserId(user.get()).get());
+        if (user.isPresent()) {
+          user = user.get();
+        }
+        return new AmbulanteDTO(ambulanteRepo.findByUserId(user).get());
     }
 
     @ApiOperation(value = "Atualiza dados de usuário do participante")
@@ -145,10 +151,10 @@ public class AmbulanteController {
                         });
             })
                     .orElseGet(() -> {
-                        return Mensagem.error("Praia", 4);
+                        return Mensagem.error(PRAIA, 4);
                     });
         } catch (NullPointerException e) {
-            return Mensagem.error("Formato JSON inválido, verifique e tente novamente", 5);
+            return Mensagem.error(FORMATO_JSON_INVALIDO, 5);
         } catch (Exception e) {
             return Mensagem.error(e.getMessage(), 5);
         }
@@ -178,10 +184,10 @@ public class AmbulanteController {
                         });
             })
                     .orElseGet(() -> {
-                        return Mensagem.error("Praia", 4);
+                        return Mensagem.error(PRAIA, 4);
                     });
         } catch (NullPointerException e) {
-            return Mensagem.error("Formato JSON inválido, verifique e tente novamente", 5);
+            return Mensagem.error(FORMATO_JSON_INVALIDO, 5);
         } catch (Exception e) {
             return Mensagem.error(e.getMessage(), 5);
         }
@@ -209,10 +215,10 @@ public class AmbulanteController {
                         });
             })
                     .orElseGet(() -> {
-                        return Mensagem.error("Praia", 4);
+                        return Mensagem.error(PRAIA, 4);
                     });
         } catch (NullPointerException e) {
-            return Mensagem.error("Formato JSON inválido, verifique e tente novamente", 5);
+            return Mensagem.error(FORMATO_JSON_INVALIDO, 5);
         } catch (Exception e) {
             return Mensagem.error(e.getMessage(), 5);
         }

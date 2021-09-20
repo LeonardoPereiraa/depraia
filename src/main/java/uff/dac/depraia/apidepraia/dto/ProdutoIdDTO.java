@@ -8,6 +8,7 @@ public class ProdutoIdDTO {
     private Integer id;
 
     public ProdutoIdDTO() {
+        // implementação padrão ignorada
     }
       
     public Produto conversor(Produto p) {

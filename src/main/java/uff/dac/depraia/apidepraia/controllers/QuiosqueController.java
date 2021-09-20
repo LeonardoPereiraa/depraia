@@ -22,6 +22,9 @@ import uff.dac.depraia.apidepraia.repositories.PraiaRepository;
 import uff.dac.depraia.apidepraia.repositories.QuiosqueRepository;
 import uff.dac.depraia.apidepraia.util.Mensagem;
 
+final String FORMATO_JSON_INVALIDO = "Formato JSON inválido, verifique e tente novamente";
+final String PRAIA = "Praia";
+
 @Controller
 @RequestMapping("/quiosque")
 public class QuiosqueController {
@@ -46,10 +49,10 @@ public class QuiosqueController {
                         return Mensagem.sucesso(aux.getClass().getSimpleName(), 1);
                     })
                     .orElseGet(() -> {
-                        return Mensagem.error("Praia", 4);
+                        return Mensagem.error(PRAIA, 4);
                     });
         } catch (NullPointerException e) {
-            return Mensagem.error("Formato JSON inválido, verifique e tente novamente", 5);
+            return Mensagem.error(FORMATO_JSON_INVALIDO, 5);
         }
     }
 
@@ -89,10 +92,10 @@ public class QuiosqueController {
                         });
             })
                     .orElseGet(() -> {
-                        return Mensagem.error("Praia", 4);
+                        return Mensagem.error(PRAIA, 4);
                     });
         } catch (NullPointerException e) {
-            return Mensagem.error("Formato JSON inválido, verifique e tente novamente", 5);
+            return Mensagem.error(FORMATO_JSON_INVALIDO, 5);
         } catch (Exception e) {
             return Mensagem.error(e.getMessage(), 5);
         }
@@ -121,10 +124,10 @@ public class QuiosqueController {
                         });
             })
                     .orElseGet(() -> {
-                        return Mensagem.error("Praia", 4);
+                        return Mensagem.error(PRAIA, 4);
                     });
         } catch (NullPointerException e) {
-            return Mensagem.error("Formato JSON inválido, verifique e tente novamente", 5);
+            return Mensagem.error(FORMATO_JSON_INVALIDO, 5);
         } catch (Exception e) {
             return Mensagem.error(e.getMessage(), 5);
         }

@@ -10,6 +10,7 @@ public class ProdutoDTO {
     private Double preco;    
 
     public ProdutoDTO() {
+        // implementação padrão ignorada
     }
 
     public ProdutoDTO(String nome, String descricao, Double preco) {
